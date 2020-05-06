@@ -31,8 +31,12 @@ const actions = {
   [AUTH_REQUEST]: ({ commit, dispatch }, user) => {
     return new Promise((resolve, reject) => {
       commit(AUTH_REQUEST);
+      // This is a mocked API call. There is no actual HTTP request sent to any
+      // backend. Method `apiCall` is imported from `utils/api.js`.
       apiCall({ url: "auth", data: user, method: "POST" })
         .then(resp => {
+          // A token is returned by the backend with value:
+          // "This-is-a-mocked-token"
           localStorage.setItem("user-token", resp.token);
           // Here set the header of your ajax library to the token value.
           // example with axios
