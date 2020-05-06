@@ -19,6 +19,14 @@ const getters = {
   authStatus: state => state.status
 };
 
+//
+// How Vuex behaves when a target action is received. An action is
+// triggered from Vue.js components, such as the login component:
+//
+//     this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
+//       this.$router.push("/");
+//     });
+//
 const actions = {
   [AUTH_REQUEST]: ({ commit, dispatch }, user) => {
     return new Promise((resolve, reject) => {
